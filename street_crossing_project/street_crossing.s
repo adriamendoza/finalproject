@@ -379,7 +379,7 @@ second_countdown:
         ldr r0, =#1000
         bl delay
 
-                mov r0, #YLLW_PIN
+        mov r0, #YLLW_PIN
         mov r1, #HIGH
         bl digitalWrite
 
