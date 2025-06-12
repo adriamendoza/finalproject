@@ -105,11 +105,11 @@ traffic_light_function:
         ldr r0, =#500
         bl delay
 
-        mov r0, #RGB_GRN
+        mov r0, #RGB_GRN        // start on/off of RED "cross" LED and YELLOW "cross" LED
         mov r1, #OUTPUT
         bl pinMode
 
-        mov r0, #RGB_GRN         // start on/off of RED "cross" LED and YELLOW "cross" LED
+        mov r0, #RGB_GRN
         mov r1, #HIGH
         bl digitalWrite
 
