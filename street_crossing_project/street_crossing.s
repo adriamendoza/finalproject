@@ -77,7 +77,22 @@ main:
 
         ldr r0, =#1250
         bl delay
-        
+
+        mov r0, #GRN_PIN        // green "traffic" light on and red "don't cross" on
+        mov r1, #OUTPUT
+        bl pinMode
+
+        mov r0, #GRN_PIN
+        mov r1, #HIGH
+        bl digitalWrite
+
+        mov r0, #RGB_RED
+        mov r1, #OUTPUT
+        bl pinMode
+
+        mov r0, #RGB_RED
+        mov r1, #HIGH
+        bl digitalWrite
 
 traffic_and_cross:
 
