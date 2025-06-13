@@ -33,8 +33,50 @@ main:
         push {lr}
         bl wiringPiSetup // initializes the wiringPi library
 
-        ldr r0, =press_button
+        ldr r0, =cross_msg_no
         bl printf
+
+        mov r0, #RED_PIN        // turns off all LEDs
+        mov r1, #OUTPUT
+        bl pinMode
+
+        mov r0, #RED_PIN
+        mov r1, #LOW
+        bl digitalWrite
+
+        mov r0, #GRN_PIN
+        mov r1, #OUTPUT
+
+        mov r0, #GRN_PIN
+        mov r1, #LOW
+        bl digitalWrite
+
+        mov r0, #YLLW_PIN
+        mov r1, #OUTPUT
+        bl pinMode
+
+        mov r0, #YLLW_PIN
+        mov r1, #LOW
+        bl digitalWrite
+
+        mov r0, #RGB_GRN
+        mov r1, #OUTPUT
+        bl pinMode
+
+        mov r0, #RGB_GRN
+        mov r1, #LOW
+        bl digitalWrite
+
+        mov r0, #RGB_RED
+        mov r1, #OUTPUT
+        bl pinMode
+
+        mov r0, #RGB_RED
+        mov r1, #LOW
+        bl digitalWrite
+
+        ldr r0, =#1250
+        bl delay
 
 traffic_and_cross:
 
@@ -373,40 +415,52 @@ second_countdown:
         mov r1, #HIGH
         bl digitalWrite
 
-        ldr r0, =cross_msg_yes  // last cross message
+        ldr r0, =cross_msg_yes   // last cross message
         bl printf
 
         ldr r0, =#10000
         bl delay
 
         mov r0, #RED_PIN        // turns off all LEDs
+        mov r1, #OUTPUT
+        bl pinMode
+
+        mov r0, #RED_PIN
         mov r1, #LOW
         bl digitalWrite
+
+        mov r0, #GRN_PIN
+        mov r1, #OUTPUT
 
         mov r0, #GRN_PIN
         mov r1, #LOW
         bl digitalWrite
 
         mov r0, #YLLW_PIN
+        mov r1, #OUTPUT
+        bl pinMode
+
+        mov r0, #YLLW_PIN
         mov r1, #LOW
         bl digitalWrite
+
+        mov r0, #RGB_GRN
+        mov r1, #OUTPUT
+        bl pinMode
 
         mov r0, #RGB_GRN
         mov r1, #LOW
         bl digitalWrite
 
         mov r0, #RGB_RED
+        mov r1, #OUTPUT
+        bl pinMode
+
+        mov r0, #RGB_RED
         mov r1, #LOW
         bl digitalWrite
 
-        mov r0, #YLLW_CROSS
-        mov r1, #LOW
-        bl digitalWrite
-
-        ldr r0, =end_msg
-        bl printf
-
-        bl traffic_and_cross
+// exit program
 
         mov r0, #0
         pop {pc}
