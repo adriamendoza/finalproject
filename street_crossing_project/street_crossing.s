@@ -132,7 +132,7 @@ traffic_light_function:
         mov r1, #OUTPUT
         bl pinMode
 
-        mov r0, #YLLW_PIN       // 1
+        mov r0, #YLLW_PIN       // 1, yellow traffic light starts flashing
         mov r1, #HIGH
         bl digitalWrite
 
