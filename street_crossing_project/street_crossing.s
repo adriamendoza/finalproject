@@ -13,8 +13,6 @@
 .equ RGB_GRN, 25        // wiringPi 25; BCM 26; physical pin 37
 .equ RGB_RED, 22        // wiringPi 22; BCM 6; physical pin 31
 
-.equ YLLW_CROSS, 24     // wiringPi 24; BCM 19; physical pin 35
-
 .equ BTN_PRESS, 29 // wiringPi 29; BCM 21; physical pin 40; button
 
 .section .rodata
@@ -105,19 +103,11 @@ traffic_light_function:
         ldr r0, =#500
         bl delay
 
-        mov r0, #RGB_GRN        // start on/off of RED "cross" LED and YELLOW "cross" LED
+        mov r0, #RGB_GRN        // start on/off of RED "cross" LED
         mov r1, #OUTPUT
         bl pinMode
 
         mov r0, #RGB_GRN
-        mov r1, #HIGH
-        bl digitalWrite
-
-        mov r0, #YLLW_CROSS
-        mov r1, #OUTPUT
-        bl pinMode
-        
-        mov r0, #YLLW_CROSS
         mov r1, #HIGH
         bl digitalWrite
 
@@ -134,22 +124,10 @@ first_countdown:
         mov r1, #LOW
         bl digitalWrite
 
-        mov r0, #YLLW_CROSS
-        mov r1, #OUTPUT
-        bl pinMode
-
-        mov r0, #YLLW_CROSS
-        mov r1, #LOW
-        bl digitalWrite
-
         ldr r0, =#1000
         bl delay
 
         mov r0, #RGB_GRN
-        mov r1, #HIGH
-        bl digitalWrite
-
-        mov r0, #YLLW_CROSS
         mov r1, #HIGH
         bl digitalWrite
 
@@ -164,18 +142,10 @@ first_countdown:
         mov r1, #LOW
         bl digitalWrite
 
-        mov r0, #YLLW_CROSS
-        mov r1, #LOW
-        bl digitalWrite
-
         ldr r0, =#1000
         bl delay
 
         mov r0, #RGB_GRN
-        mov r1, #HIGH
-        bl digitalWrite
-
-        mov r0, #YLLW_CROSS
         mov r1, #HIGH
         bl digitalWrite
 
@@ -190,18 +160,10 @@ first_countdown:
         mov r1, #LOW
         bl digitalWrite
 
-        mov r0, #YLLW_CROSS
-        mov r1, #LOW
-        bl digitalWrite
-
         ldr r0, =#1000
         bl delay
 
         mov r0, #RGB_GRN
-        mov r1, #HIGH
-        bl digitalWrite
-
-        mov r0, #YLLW_CROSS
         mov r1, #HIGH
         bl digitalWrite
 
@@ -216,18 +178,10 @@ first_countdown:
         mov r1, #LOW
         bl digitalWrite
 
-        mov r0, #YLLW_CROSS
-        mov r1, #LOW
-        bl digitalWrite
-
         ldr r0, =#1000
         bl delay
 
         mov r0, #RGB_GRN
-        mov r1, #HIGH
-        bl digitalWrite
-
-         mov r0, #YLLW_CROSS
         mov r1, #HIGH
         bl digitalWrite
 
@@ -242,18 +196,10 @@ first_countdown:
         mov r1, #LOW
         bl digitalWrite
 
-        mov r0, #YLLW_CROSS
-        mov r1, #LOW
-        bl digitalWrite
-
         ldr r0, =#1000
         bl delay
 
         mov r0, #RGB_GRN
-        mov r1, #HIGH
-        bl digitalWrite
-
-        mov r0, #YLLW_CROSS
         mov r1, #HIGH
         bl digitalWrite
 
@@ -265,10 +211,6 @@ first_countdown:
         bl delay
 
         mov r0, #RGB_GRN        // turn off "cross" LEDs
-        mov r1, #LOW
-        bl digitalWrite
-
-        mov r0, #YLLW_CROSS
         mov r1, #LOW
         bl digitalWrite
 
