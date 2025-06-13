@@ -17,10 +17,10 @@
 
 .section .rodata
 
-cross_msg_no: .asciz " X Do Not Cross! Traffic Light Is Green! X \n"
-cross_msg_yes: .asciz " + You Can Cross Now! Traffic Light Is Red! + \n"
-end_msg: .asciz "You Safely Crossed The Crosswalk! (Press Button Again To Cross)\n"
-press_button: .asciz "Press The Button To Start!\n"
+cross_msg_no: .asciz "Do Not Cross! Traffic Light Is Green!\n"
+
+cross_msg_yes: .asciz "You Can Cross Now! Traffic Light Is Red!\n"
+
 countdown: .asciz "%u...\n"
 
 delay_sec: .word
