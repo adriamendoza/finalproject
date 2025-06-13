@@ -77,6 +77,7 @@ main:
 
         ldr r0, =#1250
         bl delay
+        
 
 traffic_and_cross:
 
