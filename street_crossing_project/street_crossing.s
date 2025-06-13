@@ -293,6 +293,8 @@ traffic_light_function:
         ldr r0, =#500
         bl delay
 
+countdown_starts:
+
         mov r0, #RGB_GRN        //start on/off of RED "cross" LED
         mov r1, #OUTPUT
         bl pinMode
@@ -300,8 +302,6 @@ traffic_light_function:
         mov r0, #RGB_GRN
         mov r1, #HIGH
         bl digitalWrite
-
-first_countdown:
 
         ldr r0, =countdown
         mov r1, #6      // countdown from 6
