@@ -105,7 +105,45 @@ traffic_and_cross:
 
 traffic_light_function:
 
-        mov r0, #YLLW_CROSS // turn off all LEDs
+// (1) green "traffic" led turns off >>> (2) yellow "traffic" led starts flashing >>> (3) red "traffic" led turns on
+
+// (1) red "cross" led starts flashing >>> (2) red "cross" led turns off >>> (3) green "cross" led turns on
+
+        mov r0, #GRN_PIN
+        mov r1, #OUTPUT
+        bl pinMode
+
+        mov r0, #GRN_PIN
+        mov r1, #LOW
+        bl digitalWrite
+
+        mov r0, #RGB_RED
+        mov r1, #OUTPUT
+        bl pinMode
+
+        mov r0, #RGB_RED
+        mov r1, #LOW
+        bl digitalWrite
+
+        ldr r0, =#1000
+        bl delay
+
+        mov r0, #YLLW_PIN
+        mov r1, #OUTPUT
+        bl pinMode
+
+        mov r0, #YLLW_PIN       // 1
+        mov r1, #HIGH
+        bl digitalWrite
+
+        mov r0, #RGB_RED
+        mov r1, #HIGH
+        bl digitalWrite
+
+        ldr r0, =#1000
+        bl delay
+
+        mov r0, #YLLW_PIN
         mov r1, #LOW
         bl digitalWrite
 
@@ -113,19 +151,113 @@ traffic_light_function:
         mov r1, #LOW
         bl digitalWrite
 
-        mov r0, #RGB_GRN
-        mov r1, #LOW
+        ldr r0, =#1000
+        bl delay
+
+        mov r0, #YLLW_PIN       //2
+        mov r1, #HIGH
         bl digitalWrite
 
-        mov r0, #RED_PIN
-        mov r1, #LOW
+        mov r0, #RGB_RED
+        mov r1, #HIGH
         bl digitalWrite
 
-        mov r0, #GRN_PIN
-        mov r1, #LOW
-        bl digitalWrite
+        ldr r0, =#1000
+        bl delay
 
         mov r0, #YLLW_PIN
+        mov r1, #LOW
+        bl digitalWrite
+
+        mov r0, #RGB_RED
+        mov r1, #LOW
+        bl digitalWrite
+
+        ldr r0, =#1000
+        bl delay
+
+        mov r0, #YLLW_PIN       //3
+        mov r1, #HIGH
+        bl digitalWrite
+
+        mov r0, #RGB_RED
+        mov r1, #HIGH
+        bl digitalWrite
+
+        ldr r0, =#1000
+        bl delay
+
+        mov r0, #YLLW_PIN
+        mov r1, #LOW
+        bl digitalWrite
+
+        mov r0, #RGB_RED
+        mov r1, #LOW
+        bl digitalWrite
+
+        ldr r0, =#1000
+        bl delay
+
+        mov r0, #YLLW_PIN       //4
+        mov r1, #HIGH
+        bl digitalWrite
+
+        mov r0, #RGB_RED
+        mov r1, #HIGH
+        bl digitalWrite
+
+        ldr r0, =#1000
+        bl delay
+
+        mov r0, #YLLW_PIN
+        mov r1, #LOW
+        bl digitalWrite
+
+        mov r0, #RGB_RED
+        mov r1, #LOW
+        bl digitalWrite
+
+        ldr r0, =#1000
+        bl delay
+
+          mov r0, #YLLW_PIN       //5
+        mov r1, #HIGH
+        bl digitalWrite
+
+        mov r0, #RGB_RED
+        mov r1, #HIGH
+        bl digitalWrite
+
+        ldr r0, =#1000
+        bl delay
+
+        mov r0, #YLLW_PIN
+        mov r1, #LOW
+        bl digitalWrite
+
+        mov r0, #RGB_RED
+        mov r1, #LOW
+        bl digitalWrite
+
+        ldr r0, =#1000
+        bl delay
+
+        mov r0, #YLLW_PIN       //6
+        mov r1, #HIGH
+        bl digitalWrite
+
+        mov r0, #RGB_RED
+        mov r1, #HIGH
+        bl digitalWrite
+
+        ldr r0, =#1000
+        bl delay
+
+        mov r0, #YLLW_PIN
+        mov r1, #LOW
+        bl digitalWrite
+
+        mov r0, #RGB_RED
         mov r1, #LOW
         bl digitalWrite
 
@@ -151,7 +283,7 @@ traffic_light_function:
         mov r1, #HIGH
         bl digitalWrite
 
-        ldr r0, =#10000         // delay for 10 sec
+        ldr r0, =#10000 // delay for 10 sec
         bl delay
 
         mov r0, #RGB_GRN
@@ -161,7 +293,7 @@ traffic_light_function:
         ldr r0, =#500
         bl delay
 
-        mov r0, #RGB_GRN        // start on/off of RED "cross" LED
+        mov r0, #RGB_GRN        //start on/off of RED "cross" LED
         mov r1, #OUTPUT
         bl pinMode
 
@@ -281,14 +413,14 @@ stop_crossing:
         mov r1, #OUTPUT
         bl pinMode
 
-        mov r0, #RGB_RED        // turn on RED "do not cross" LED
+        mov r0, #RGB_RED        // turn on RED "cross" LED
         mov r1, #HIGH
         bl digitalWrite
 
         ldr r0, =#250
         bl delay
 
-        mov r0, #RED_PIN        // turn off RED "stop traffic" LED
+        mov r0, #RED_PIN        // turn off RED "traffic" LED
         mov r1, #LOW
         bl digitalWrite
 
@@ -324,11 +456,7 @@ stop_crossing:
         mov r1, #HIGH
         bl digitalWrite
 
-second_countdown:
-
-        ldr r0, =countdown      // start countdown at 6
-        mov r1, #6
-        bl printf
+yellow_traffic_flash:
 
         ldr r0, =#1000
         bl delay
@@ -344,9 +472,19 @@ second_countdown:
         mov r1, #HIGH
         bl digitalWrite
 
-        ldr r0, =countdown      // countdown at 5
-        mov r1, #5
-        bl printf
+        ldr r0, =#1000
+        bl delay
+
+        mov r0, #YLLW_PIN
+        mov r1, #LOW
+        bl digitalWrite
+
+        ldr r0, =#1000
+        bl delay
+
+        mov r0, #YLLW_PIN
+        mov r1, #HIGH
+        bl digitalWrite
 
         ldr r0, =#1000
         bl delay
@@ -362,9 +500,12 @@ second_countdown:
         mov r1, #HIGH
         bl digitalWrite
 
-        ldr r0, =countdown      // countdown at 4
-        mov r1, #4
-        bl printf
+        ldr r0, =#1000
+        bl delay
+
+        mov r0, #YLLW_PIN
+        mov r1, #HIGH
+        bl digitalWrite
 
         ldr r0, =#1000
         bl delay
@@ -379,39 +520,6 @@ second_countdown:
         mov r0, #YLLW_PIN
         mov r1, #HIGH
         bl digitalWrite
-
-        ldr r0, =countdown      // countdown at 3
-        mov r1, #3
-        bl printf
-
-        ldr r0, =#1000
-        bl delay
-
-        mov r0, #YLLW_PIN
-        mov r1, #HIGH
-        bl digitalWrite
-
-        ldr r0, =countdown      // countdown at 2
-        mov r1, #2
-        bl printf
-
-        ldr r0, =#1000
-        bl delay
-
-        mov r0, #YLLW_PIN
-        mov r1, #LOW
-        bl digitalWrite
-
-        ldr r0, =#1000
-        bl delay
-
-        mov r0, #YLLW_PIN
-        mov r1, #HIGH
-        bl digitalWrite
-
-        ldr r0, =countdown      // countdown at 1
-        mov r1, #1
-        bl printf
 
         ldr r0, =#1000
         bl delay
