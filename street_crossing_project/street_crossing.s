@@ -220,7 +220,7 @@ traffic_light_function:
         ldr r0, =#1000
         bl delay
 
-          mov r0, #YLLW_PIN       //5
+        mov r0, #YLLW_PIN       //5
         mov r1, #HIGH
         bl digitalWrite
 
